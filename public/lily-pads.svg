@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg2"
+    viewBox="0 0 744.09 1052.4"
+    version="1.1"
+  >
+  <g
+      id="layer1"
+      stroke="#000"
+    >
+    <path
+        id="path3082"
+        stroke-width="10"
+        transform="translate(-225.26 -408.1)"
+        fill="#fff"
+        d="m779.84 818.01a163.64 39.396 0 1 1 -38.09 -25.27l-125.56 25.265z"
+    />
+    <path
+        id="path4162"
+        stroke-width="10"
+        transform="translate(-225.26 -408.1)"
+        fill="#fff"
+        d="m568.67 763.67a155.56 35.355 0 1 1 31.851 6.6625l88.399-29.092z"
+    />
+    <path
+        id="path4158"
+        stroke-width="10"
+        transform="translate(-225.26 -408.1)"
+        fill="#fff"
+        d="m277.83 768.64a161.62 45.457 0 1 1 28.825 12.952l120.64-30.251z"
+    />
+    <path
+        id="path4932"
+        stroke-width="7"
+        fill="none"
+        d="m200.01 339.19s10.102-18.183 11.112-29.294"
+    />
+    <path
+        id="path4932-2"
+        stroke-width="7"
+        fill="none"
+        d="m202.54 343.74s93.944-4.0406 115.16 5.0508"
+    />
+    <path
+        id="path4932-25"
+        stroke-width="7"
+        fill="none"
+        d="m457.09 335.66s23.234-14.142 24.244-25.254"
+    />
+    <path
+        id="path4932-25-5"
+        stroke-width="7"
+        fill="none"
+        d="m406.08 408.39s-76.772 7.0711-121.22-9.0914"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Lily Pads</dc:title
+        >
+        <dc:date
+          >2013-08-29T00:51:53</dc:date
+        >
+        <dc:description
+          >Three lily pads floating.</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/182536/lily-pads-by-teeks99-182536</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >teeks99</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >lily lilly pad frog</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
