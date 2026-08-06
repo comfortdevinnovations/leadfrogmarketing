@@ -322,12 +322,13 @@ function DraggableLilyPad({
   );
 }
 
-const AMBIENT_RIPPLE_RADIUS = 260; // px — how far from center ripples may spawn
-const AMBIENT_RIPPLE_SIZE = 90; // px diameter of an ambient ripple ring
+const AMBIENT_RIPPLE_RADIUS = 280; // px — how far from center ripples may spawn
+const AMBIENT_RIPPLE_SIZE = [60, 150] as const; // px diameter range of a ripple ring
 const AMBIENT_RIPPLE_LIFE = 3200; // ms — matches the ripple-out animation length
-const AMBIENT_RIPPLE_GAP = [900, 2600] as const; // ms range between spawns
+const AMBIENT_RIPPLE_GAP = [200, 650] as const; // ms range between spawns
+const AMBIENT_RIPPLE_BURST = [1, 3] as const; // how many ripples pop up per tick
 
-type AmbientRipple = { id: number; x: number; y: number };
+type AmbientRipple = { id: number; x: number; y: number; size: number };
 
 function useAmbientRipples() {
   const [ripples, setRipples] = useState<AmbientRipple[]>([]);
@@ -337,9 +338,10 @@ function useAmbientRipples() {
     let alive = true;
     let timeoutId: ReturnType<typeof setTimeout>;
 
-    const spawn = () => {
+    const spawnOne = () => {
       const angle = Math.random() * Math.PI * 2;
       const distance = Math.random() * AMBIENT_RIPPLE_RADIUS;
+      const [minSize, maxSize] = AMBIENT_RIPPLE_SIZE;
       const id = nextId.current++;
       setRipples((prev) => [
         ...prev,
@@ -347,6 +349,7 @@ function useAmbientRipples() {
           id,
           x: Math.cos(angle) * distance,
           y: Math.sin(angle) * distance,
+          size: minSize + Math.random() * (maxSize - minSize),
         },
       ]);
       setTimeout(() => {
@@ -355,14 +358,18 @@ function useAmbientRipples() {
     };
 
     const tick = () => {
-      spawn();
+      const [minBurst, maxBurst] = AMBIENT_RIPPLE_BURST;
+      const burst =
+        minBurst + Math.floor(Math.random() * (maxBurst - minBurst + 1));
+      for (let i = 0; i < burst; i++) spawnOne();
+
       const [min, max] = AMBIENT_RIPPLE_GAP;
       timeoutId = setTimeout(() => {
         if (alive) tick();
       }, min + Math.random() * (max - min));
     };
 
-    timeoutId = setTimeout(tick, 500);
+    timeoutId = setTimeout(tick, 300);
     return () => {
       alive = false;
       clearTimeout(timeoutId);
@@ -394,7 +401,6 @@ export default function PondScene() {
       <div className="absolute inset-6 rounded-full bg-gradient-to-tr from-primary/10 via-transparent to-white/50" />
       <div className="absolute inset-10 rounded-full opacity-[0.06] grain-overlay" />
       <div className="absolute inset-x-16 top-10 h-px bg-white/50" />
-      <RippleIcon className="absolute left-[38%] top-[42%] h-56 w-56 -translate-x-1/2 -translate-y-1/2 text-primary/10 animate-[water-shimmer_7s_ease-in-out_infinite]" />
 
       {/* random ripples popping up across the water, independent of the pads */}
       {ambientRipples.map((ripple) => (
@@ -402,8 +408,8 @@ export default function PondScene() {
           key={ripple.id}
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 animate-ripple-out"
           style={{
-            width: AMBIENT_RIPPLE_SIZE,
-            height: AMBIENT_RIPPLE_SIZE,
+            width: ripple.size,
+            height: ripple.size,
             left: `calc(50% + ${ripple.x}px)`,
             top: `calc(50% + ${ripple.y}px)`,
           }}
