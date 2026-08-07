@@ -66,15 +66,15 @@ export default function Home() {
         />
 
         <div className="relative w-full max-w-[120rem] mx-auto px-6 md:px-8 pt-20 pb-24 md:pt-28 md:pb-32 grid gap-16 lg:grid-cols-[1.15fr_0.85fr] items-center">
-          <div>
+          <div className="min-w-0">
             <RevealOnScroll>
-              <span className="flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-alt-primary font-paragraph">
-                <span className="h-px w-10 bg-accent" aria-hidden="true" />
+              <span className="flex items-center gap-3 text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.28em] text-alt-primary font-paragraph">
+                <span className="h-px w-6 sm:w-10 shrink-0 bg-accent" aria-hidden="true" />
                 Lead Generation &middot; Strategy &middot; Analytics
               </span>
             </RevealOnScroll>
 
-            <h1 className="font-heading font-black uppercase text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.86] tracking-[-0.02em] text-primary mb-8 md:mb-12 mt-6">
+            <h1 className="font-heading font-black uppercase text-[2.5rem] sm:text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.86] tracking-[-0.02em] text-primary mb-8 md:mb-12 mt-6">
               <RevealOnScroll delay={0.05}>
                 <span className="block">Accelerated</span>
               </RevealOnScroll>
@@ -115,7 +115,7 @@ export default function Home() {
 
           <RevealOnScroll
             delay={0.2}
-            className="relative mx-auto w-full max-w-md"
+            className="relative mx-auto w-full min-w-0 max-w-md"
           >
             <div className="relative aspect-square rounded-[3rem] border border-secondary/60 bg-gradient-to-br from-secondary/70 via-faded-primary/40 to-alt-primary/20 backdrop-blur-2xl shadow-[0_40px_90px_-40px_rgba(2,83,116,0.5)] overflow-hidden">
               <div
