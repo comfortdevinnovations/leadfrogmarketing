@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { LOCKUP } from "@/components/brand";
+import { useIntro } from "@/components/IntroProvider";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -13,6 +15,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const pathname = usePathname();
+  const { brandRevealed } = useIntro();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,19 +35,26 @@ export default function Header() {
       }`}
     >
       <div className="w-full max-w-[120rem] mx-auto px-6 md:px-8 flex items-center justify-between h-20">
+        {/* The intro splash flies its own copy of this lockup into place, so
+            ours stays hidden until it has landed (see IntroSplash). */}
         <Link
           href="/"
-          className="group flex items-center gap-2.5 font-heading text-xl text-primary"
+          data-brand-lockup=""
+          className={`group ${LOCKUP.root} transition-opacity duration-200 ${
+            brandRevealed ? "opacity-100" : "opacity-0"
+          }`}
         >
           <Image
             src="/green-logo.png"
             alt="Lead Frog Marketing"
-            width={40}
-            height={40}
+            // Matches the splash's copy so both resolve to one optimized URL
+            // and the hand-off can't flash an unloaded image.
+            width={200}
+            height={200}
             priority
-            className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-105"
+            className={`${LOCKUP.logo} transition-transform duration-300 group-hover:scale-105`}
           />
-          <span className="font-bold tracking-tight">
+          <span className={LOCKUP.word}>
             Lead Frog<span className="text-accent">.</span>
           </span>
         </Link>
