@@ -79,7 +79,7 @@ export default function Home() {
               </span>
             </RevealOnScroll>
 
-            <h1 className="font-heading font-black uppercase text-[2.5rem] sm:text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.86] tracking-[-0.02em] text-primary mb-8 md:mb-12 mt-6">
+            <h1 className="font-heading font-black uppercase text-[2.5rem] sm:text-6xl md:text-8xl lg:text-6xl xl:text-8xl 2xl:text-[7.5rem] leading-[0.86] tracking-[-0.02em] text-primary mb-8 md:mb-12 mt-6">
               <RevealOnScroll delay={0.05}>
                 <span className="block">Accelerated</span>
               </RevealOnScroll>
