@@ -5,10 +5,24 @@ import RevealOnScroll from '@/components/RevealOnScroll';
 import ServicesGrid from '@/components/ServicesGrid';
 import { ArrowIcon } from '@/components/icons';
 
+const description =
+  'SEO, paid advertising, social, email automation, and CRM-driven lead nurturing — five disciplines working as one growth engine.';
+
 export const metadata: Metadata = {
-  title: 'Services | Lead Frog Marketing',
-  description:
-    'SEO, paid advertising, social, email automation, and CRM-driven lead nurturing — five disciplines working as one growth engine.',
+  title: 'Services',
+  description,
+  alternates: {
+    canonical: '/services',
+  },
+  openGraph: {
+    title: 'Services | Lead Frog Marketing',
+    description,
+    url: '/services',
+  },
+  twitter: {
+    title: 'Services | Lead Frog Marketing',
+    description,
+  },
 };
 
 export default function ServicesPage() {

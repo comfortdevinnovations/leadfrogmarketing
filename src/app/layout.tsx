@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Instrument_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import IntroProvider from "@/components/IntroProvider";
 import IntroSplash from "@/components/IntroSplash";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -18,10 +19,38 @@ const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
 });
 
+const title = "Lead Frog Marketing | Accelerated Growth";
+const description =
+  "Lead Frog Marketing is a trusted growth partner delivering lead generation, digital strategy, and analytics that compound results.";
+
 export const metadata: Metadata = {
-  title: "Lead Frog Marketing | Accelerated Growth",
-  description:
-    "Lead Frog Marketing is a trusted growth partner delivering lead generation, digital strategy, and analytics that compound results.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: title,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title,
+    description,
+    url: SITE_URL,
+    images: [{ url: "/hero-analytics.jpg", width: 1200, height: 1200 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/hero-analytics.jpg"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#025374",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

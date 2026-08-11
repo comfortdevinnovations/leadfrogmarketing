@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import PlantField from '@/components/PlantField';
+import ResultsCarousel from '@/components/ResultsCarousel';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import StatCounter from '@/components/StatCounter';
 import {
@@ -69,7 +71,10 @@ export default function Home() {
           <div className="min-w-0">
             <RevealOnScroll>
               <span className="flex items-center gap-3 text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.28em] text-alt-primary font-paragraph">
-                <span className="h-px w-6 sm:w-10 shrink-0 bg-accent" aria-hidden="true" />
+                <span
+                  className="h-px w-6 sm:w-10 shrink-0 bg-accent"
+                  aria-hidden="true"
+                />
                 Lead Generation &middot; Strategy &middot; Analytics
               </span>
             </RevealOnScroll>
@@ -117,9 +122,36 @@ export default function Home() {
             delay={0.2}
             className="relative mx-auto w-full min-w-0 max-w-md"
           >
-            <div className="relative aspect-square rounded-[3rem] border border-secondary/60 bg-gradient-to-br from-secondary/70 via-faded-primary/40 to-alt-primary/20 backdrop-blur-2xl shadow-[0_40px_90px_-40px_rgba(2,83,116,0.5)] overflow-hidden">
+            {/* <PlantField
+              className="pointer-events-none absolute top-1/2 -left-13 z-0 hidden h-84 w-24 -translate-y-1/2 rotate-[-10deg] opacity-90 lg:block xl:-left-16 xl:w-28"
+              plantCount={3}
+              xRange={[20, 80]}
+            />
+            <PlantField
+              className="pointer-events-none absolute top-1/2 -right-13 z-0 hidden h-84 w-24 -translate-y-1/2 rotate-10 opacity-90 lg:block xl:-right-16 xl:w-28"
+              plantCount={3}
+              xRange={[20, 80]}
+            /> */}
+
+            <div className="relative z-10 aspect-square rounded-[3rem] border border-secondary/60 shadow-[0_40px_90px_-40px_rgba(2,83,116,0.5)] overflow-hidden">
+              <Image
+                src="/hero-analytics.jpg"
+                alt="Lead Frog strategists reviewing campaign performance dashboards"
+                fill
+                sizes="(min-width: 1024px) 28rem, 90vw"
+                priority
+                className="object-cover"
+              />
               <div
-                className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.55),transparent_60%)] animate-water-shimmer"
+                className="absolute inset-0 bg-gradient-to-br from-primary/80 via-alt-primary/50 to-transparent"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.35),transparent_60%)] animate-water-shimmer"
                 aria-hidden="true"
               />
               <div
@@ -156,7 +188,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="absolute -bottom-6 -right-6 h-24 w-24 rounded-full bg-accent/20 blur-2xl animate-water-shimmer"
+              className="absolute -bottom-6 -right-6 z-10 h-24 w-24 rounded-full bg-accent/20 blur-2xl animate-water-shimmer"
               aria-hidden="true"
             />
           </RevealOnScroll>
@@ -164,31 +196,39 @@ export default function Home() {
       </section>
 
       {/* Proven Results */}
-      <section className="relative w-full max-w-[120rem] mx-auto px-6 md:px-8 py-20 md:py-28">
-        <RevealOnScroll className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-alt-primary font-paragraph">
-            Proven Results
-          </p>
-          <h2 className="mt-3 font-heading italic text-4xl md:text-5xl text-primary">
-            Results that speak, and a{' '}
-            <span className="not-italic rounded-xl bg-accent px-2.5 py-0.5">
-              trusted partner
-            </span>{' '}
-            that sticks around.
-          </h2>
-        </RevealOnScroll>
+      <section className="relative bg-primary py-20 md:py-28">
+        <div className="relative w-full max-w-[120rem] mx-auto px-6 md:px-8 grid gap-14 lg:grid-cols-[1.05fr_0.95fr] items-center">
+          <div>
+            <RevealOnScroll className="max-w-2xl">
+              <p className="text-xs uppercase tracking-[0.2em] text-secondary/70 font-paragraph">
+                Proven Results
+              </p>
+              <h2 className="mt-3 font-heading italic text-4xl md:text-5xl leading-[1.35] text-secondary">
+                Results that speak, and a{' '}
+                <span className="not-italic rounded-xl bg-accent px-2.5 py-0.5 text-text">
+                  trusted partner
+                </span>{' '}
+                that sticks around.
+              </h2>
+            </RevealOnScroll>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 max-w-3xl">
-          <RevealOnScroll delay={0.1}>
-            <StatCounter
-              value={210}
-              prefix="$"
-              suffix="M"
-              label="Lead Value Created"
-            />
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
-            <StatCounter value={98} suffix="%" label="Client Retention" />
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 max-w-3xl">
+              <RevealOnScroll delay={0.1}>
+                <StatCounter
+                  value={210}
+                  prefix="$"
+                  suffix="M"
+                  label="Lead Value Created"
+                />
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.2}>
+                <StatCounter value={98} suffix="%" label="Client Retention" />
+              </RevealOnScroll>
+            </div>
+          </div>
+
+          <RevealOnScroll delay={0.15} className="w-full">
+            <ResultsCarousel className="aspect-4/5 w-full max-w-md mx-auto lg:max-w-none" />
           </RevealOnScroll>
         </div>
       </section>

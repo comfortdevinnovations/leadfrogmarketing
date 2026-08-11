@@ -3,10 +3,24 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import ContactForm from "@/components/ContactForm";
 import { EmailIcon, PhoneIcon } from "@/components/icons";
 
+const description =
+  "Tell Lead Frog Marketing about your growth goals and a strategist will follow up within one business day.";
+
 export const metadata: Metadata = {
-  title: "Contact | Lead Frog Marketing",
-  description:
-    "Tell Lead Frog Marketing about your growth goals and a strategist will follow up within one business day.",
+  title: "Contact",
+  description,
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact | Lead Frog Marketing",
+    description,
+    url: "/contact",
+  },
+  twitter: {
+    title: "Contact | Lead Frog Marketing",
+    description,
+  },
 };
 
 export default function ContactPage() {

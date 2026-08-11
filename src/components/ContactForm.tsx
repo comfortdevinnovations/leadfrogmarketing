@@ -20,6 +20,7 @@ type Status = "idle" | "submitting" | "success";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   function toggleService(service: string) {
@@ -30,10 +31,45 @@ export default function ContactForm() {
     );
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
-    window.setTimeout(() => setStatus("success"), 900);
+    setError(null);
+
+    const data = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("your_name"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          company: data.get("company"),
+          message: data.get("message"),
+          services: selectedServices,
+          website: data.get("website"),
+        }),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setError(
+          result.error ?? "Something went wrong. Please try again."
+        );
+        setStatus("idle");
+        return;
+      }
+
+      setStatus("success");
+    } catch {
+      setError(
+        "We couldn't reach the server. Check your connection and try again."
+      );
+      setStatus("idle");
+    }
   }
 
   if (status === "success") {
@@ -59,6 +95,15 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot: hidden from people, irresistible to bots. A filled value
+          gets the submission silently dropped server-side. */}
+      <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <label>
+          Website
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="block text-sm text-text/70">
           Your Name
@@ -127,9 +172,6 @@ export default function ContactForm() {
             );
           })}
         </div>
-        {selectedServices.map((service) => (
-          <input key={service} type="hidden" name="service" value={service} />
-        ))}
       </fieldset>
 
       <label className="block text-sm text-text/70">
@@ -142,6 +184,15 @@ export default function ContactForm() {
           className={`${inputClasses} mt-2 resize-none`}
         />
       </label>
+
+      {error && (
+        <p
+          role="alert"
+          className="rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+        >
+          {error}
+        </p>
+      )}
 
       <button
         type="submit"

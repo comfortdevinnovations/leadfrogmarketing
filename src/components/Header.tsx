@@ -45,7 +45,7 @@ export default function Header() {
           }`}
         >
           <Image
-            src="/green-logo.png"
+            src="/lead-logo.png"
             alt="Lead Frog Marketing"
             // Matches the splash's copy so both resolve to one optimized URL
             // and the hand-off can't flash an unloaded image.

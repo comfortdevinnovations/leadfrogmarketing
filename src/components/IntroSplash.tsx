@@ -472,7 +472,7 @@ export default function IntroSplash() {
                 }}
               >
                 <Image
-                  src="/green-logo.png"
+                  src="/lead-logo.png"
                   alt=""
                   width={200}
                   height={200}

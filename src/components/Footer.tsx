@@ -13,9 +13,9 @@ const columns = [
   {
     title: 'Services',
     links: [
-      { href: '/services', label: 'SEO & Content Marketing' },
-      { href: '/services', label: 'Paid Advertising' },
-      { href: '/services', label: 'Lead Nurturing & CRM' },
+      { href: '/services/seo-content-marketing', label: 'SEO & Content Marketing' },
+      { href: '/services/paid-advertising', label: 'Paid Advertising' },
+      { href: '/services/lead-nurturing-crm', label: 'Lead Nurturing & CRM' },
     ],
   },
 ];
@@ -45,8 +45,8 @@ export default function Footer() {
                 <Image
                   src="/lead-logo.png"
                   alt="Lead Frog Marketing"
-                  width={64}
-                  height={64}
+                  width={512}
+                  height={512}
                   className="h-full w-full object-contain"
                 />
               </div>
