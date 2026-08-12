@@ -31,7 +31,7 @@ export default function StatCounter({
   return (
     <div
       ref={ref}
-      className="group relative rounded-[2rem] border border-secondary/50 bg-secondary/60 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(2,83,116,0.35)] before:pointer-events-none before:absolute before:inset-0 before:rounded-[2rem] before:border-t before:border-white/60 before:content-['']"
+      className="group relative rounded-[2rem] border border-secondary/50 bg-secondary/60 p-8 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(11,58,68,0.35)] before:pointer-events-none before:absolute before:inset-0 before:rounded-[2rem] before:border-t before:border-white/60 before:content-['']"
     >
       <div className="absolute -bottom-3 left-1/2 h-6 w-2/3 -translate-x-1/2 rounded-full bg-primary/10 blur-lg" />
       <p className="font-heading italic text-5xl md:text-6xl text-primary">

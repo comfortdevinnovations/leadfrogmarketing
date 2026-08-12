@@ -150,11 +150,11 @@ export function LilyPadIcon({
       />
       {withFlower && (
         <g>
-          <circle cx="21" cy="18" r="2.3" fill="#e5c697" />
-          <circle cx="16" cy="21.5" r="2.3" fill="#e5c697" />
-          <circle cx="16" cy="26.5" r="2.3" fill="#e5c697" />
-          <circle cx="21" cy="30" r="2.3" fill="#e5c697" />
-          <circle cx="25" cy="24" r="2.3" fill="#e5c697" />
+          <circle cx="21" cy="18" r="2.3" fill="#d4af63" />
+          <circle cx="16" cy="21.5" r="2.3" fill="#d4af63" />
+          <circle cx="16" cy="26.5" r="2.3" fill="#d4af63" />
+          <circle cx="21" cy="30" r="2.3" fill="#d4af63" />
+          <circle cx="25" cy="24" r="2.3" fill="#d4af63" />
           <circle cx="20.5" cy="24" r="1.4" fill="#fffaf0" />
         </g>
       )}

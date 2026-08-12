@@ -18,7 +18,7 @@ export default function ServicesGrid() {
           >
             <Link
               href={`/services/${slug}`}
-              className={`group relative flex h-full flex-col ${radius} border border-secondary/60 bg-gradient-to-br from-secondary to-faded-primary/30 p-8 shadow-[0_20px_45px_-25px_rgba(2,83,116,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_60px_-25px_rgba(2,83,116,0.45)] hover:[animation-play-state:paused] focus-visible:[animation-play-state:paused] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 animate-lily-drift`}
+              className={`group relative flex h-full flex-col ${radius} border border-secondary/60 bg-gradient-to-br from-secondary to-faded-primary/30 p-8 shadow-[0_20px_45px_-25px_rgba(11,58,68,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_60px_-25px_rgba(11,58,68,0.45)] hover:[animation-play-state:paused] focus-visible:[animation-play-state:paused] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 animate-lily-drift`}
               style={{ animationDelay: `${i * 0.8}s` }}
             >
               <div
@@ -31,7 +31,7 @@ export default function ServicesGrid() {
                 className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 style={{
                   background:
-                    "radial-gradient(circle at 50% 40%, rgba(2,83,116,0.12), transparent 60%)",
+                    "radial-gradient(circle at 50% 40%, rgba(11,58,68,0.12), transparent 60%)",
                 }}
                 aria-hidden="true"
               />

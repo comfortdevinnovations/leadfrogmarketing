@@ -91,7 +91,7 @@ export default function Home() {
             <RevealOnScroll delay={0.25} className="max-w-xl">
               <p className="text-lg leading-relaxed text-text/70">
                 Lead Frog is the{' '}
-                <span className="relative inline-block whitespace-nowrap rounded-[0.9rem] bg-accent px-3 py-1 text-text shadow-[inset_0_1px_2px_rgba(255,255,255,0.6),0_6px_14px_-6px_rgba(2,83,116,0.4)]">
+                <span className="relative inline-block whitespace-nowrap rounded-[0.9rem] bg-accent px-3 py-1 text-text shadow-[inset_0_1px_2px_rgba(255,255,255,0.6),0_6px_14px_-6px_rgba(11,58,68,0.4)]">
                   trusted partner
                 </span>{' '}
                 growth teams call when pipeline needs to move — and stay moved.
@@ -133,56 +133,63 @@ export default function Home() {
               xRange={[20, 80]}
             /> */}
 
-            <div className="relative z-10 aspect-square rounded-[3rem] border border-secondary/60 shadow-[0_40px_90px_-40px_rgba(2,83,116,0.5)] overflow-hidden">
+            {/* The crest is the brand's primary mark, so it gets the hero slot:
+                the photo drops back to texture behind it and the panel goes
+                dark, which is where the lockup's white "MARKETING" reads. */}
+            <div className="relative z-10 aspect-square rounded-[3rem] border border-secondary/60 bg-primary shadow-[0_40px_90px_-40px_rgba(11,58,68,0.5)] overflow-hidden">
               <Image
                 src="/hero-analytics.jpg"
                 alt="Lead Frog strategists reviewing campaign performance dashboards"
                 fill
                 sizes="(min-width: 1024px) 28rem, 90vw"
                 priority
-                className="object-cover"
+                className="object-cover opacity-45"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-br from-primary/80 via-alt-primary/50 to-transparent"
+                className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/70 to-alt-primary/45"
                 aria-hidden="true"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"
                 aria-hidden="true"
               />
               <div
-                className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.35),transparent_60%)] animate-water-shimmer"
+                className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(143,203,85,0.22),transparent_62%)] animate-water-shimmer"
                 aria-hidden="true"
               />
               <div
                 className="absolute inset-0 grid place-items-center"
                 aria-hidden="true"
               >
-                <span className="absolute h-16 w-16 rounded-full border-2 border-primary/40 animate-ripple-out" />
+                <span className="absolute h-16 w-16 rounded-full border-2 border-lime/35 animate-ripple-out" />
                 <span
-                  className="absolute h-16 w-16 rounded-full border-2 border-alt-primary/35 animate-ripple-out"
+                  className="absolute h-16 w-16 rounded-full border-2 border-secondary/25 animate-ripple-out"
                   style={{ animationDelay: '1.05s' }}
                 />
                 <span
-                  className="absolute h-16 w-16 rounded-full border-2 border-accent/50 animate-ripple-out"
+                  className="absolute h-16 w-16 rounded-full border-2 border-accent/45 animate-ripple-out"
                   style={{ animationDelay: '2.1s' }}
                 />
               </div>
-              <div className="absolute inset-x-0 top-0 h-px bg-white/70" />
-              <div className="absolute left-1/2 top-8 grid h-20 w-20 -translate-x-1/2 place-items-center rounded-full border border-white/60 bg-secondary/80 shadow-[0_10px_30px_-10px_rgba(2,83,116,0.4)] backdrop-blur-xl">
+              <div className="absolute inset-x-0 top-0 h-px bg-white/25" />
+
+              <div className="absolute inset-0 flex items-center justify-center px-4 pb-24">
                 <Image
-                  src="/green-logo.png"
-                  alt="Lead Frog Marketing"
-                  width={64}
-                  height={64}
-                  className="h-14 w-14 object-contain"
+                  src="/lead-frog-main-logo-transparent.png"
+                  alt="Lead Frog Marketing — growth powered by intelligence and integrity"
+                  width={1000}
+                  height={1000}
+                  sizes="(min-width: 1024px) 28rem, 90vw"
+                  priority
+                  className="w-full max-w-[24rem] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
                 />
               </div>
-              <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/50 bg-secondary/70 p-4 backdrop-blur-xl">
-                <p className="font-heading italic text-2xl text-primary">
+
+              <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-xl">
+                <p className="font-heading italic text-2xl text-secondary">
                   $210M+
                 </p>
-                <p className="text-xs uppercase tracking-[0.14em] text-text/60">
+                <p className="text-xs uppercase tracking-[0.14em] text-secondary/70">
                   Lead value created
                 </p>
               </div>
@@ -252,11 +259,11 @@ export default function Home() {
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {expertise.map(({ icon: Icon, title, copy }, i) => (
               <RevealOnScroll key={title} delay={i * 0.12}>
-                <div className="group relative h-full rounded-[2rem] bg-secondary p-8 shadow-[6px_6px_16px_rgba(2,83,116,0.12),-6px_-6px_16px_rgba(255,255,255,0.9)] transition-transform duration-300 hover:-translate-y-1.5">
+                <div className="group relative h-full rounded-[2rem] bg-secondary p-8 shadow-[6px_6px_16px_rgba(11,58,68,0.12),-6px_-6px_16px_rgba(255,255,255,0.9)] transition-transform duration-300 hover:-translate-y-1.5">
                   <span className="absolute right-7 top-7 font-heading italic text-3xl text-primary/10">
                     0{i + 1}
                   </span>
-                  <div className="grid h-14 w-14 place-items-center rounded-2xl bg-alt-primary text-secondary shadow-[inset_0_2px_3px_rgba(255,255,255,0.35),0_10px_18px_-8px_rgba(25,87,64,0.6)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-3">
+                  <div className="grid h-14 w-14 place-items-center rounded-2xl bg-alt-primary text-secondary shadow-[inset_0_2px_3px_rgba(255,255,255,0.35),0_10px_18px_-8px_rgba(46,125,79,0.6)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:rotate-3">
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="mt-6 font-heading text-xl text-primary">
@@ -275,12 +282,12 @@ export default function Home() {
       {/* Why Partner with Lead Frog */}
       <section className="relative overflow-hidden py-20 md:py-28">
         <Image
-          src="/green-logo.png"
+          src="/lead-frog-main-logo-only-transparent.png"
           alt=""
           width={800}
           height={800}
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.05]"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.07]"
         />
         <div className="relative w-full max-w-[120rem] mx-auto px-6 md:px-8 grid gap-14 lg:grid-cols-[0.9fr_1.1fr] items-start">
           <RevealOnScroll>
@@ -331,6 +338,14 @@ export default function Home() {
               className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-accent/25 blur-3xl animate-water-shimmer"
               style={{ animationDelay: '1.2s' }}
               aria-hidden="true"
+            />
+            <Image
+              src="/lead-frog-main-logo-only-transparent.png"
+              alt=""
+              width={200}
+              height={200}
+              aria-hidden="true"
+              className="relative mx-auto mb-6 h-20 w-20 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]"
             />
             <h2 className="relative font-heading italic text-4xl md:text-5xl text-secondary max-w-2xl mx-auto">
               Ready to make growth the least of your worries?

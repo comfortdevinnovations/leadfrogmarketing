@@ -39,18 +39,25 @@ export const metadata: Metadata = {
     title,
     description,
     url: SITE_URL,
-    images: [{ url: "/hero-analytics.jpg", width: 1200, height: 1200 }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Lead Frog Marketing — growth powered by intelligence and integrity",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/hero-analytics.jpg"],
+    images: ["/og-image.png"],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#025374",
+  themeColor: "#0b3a44",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

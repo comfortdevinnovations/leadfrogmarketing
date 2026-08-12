@@ -12,7 +12,7 @@ export default function LilyPadBadge({
 }) {
   return (
     <div
-      className={`relative shrink-0 text-primary drop-shadow-[0_10px_18px_-8px_rgba(2,83,116,0.55)] ${className}`}
+      className={`relative shrink-0 text-primary drop-shadow-[0_10px_18px_-8px_rgba(11,58,68,0.55)] ${className}`}
     >
       <LilyPadIcon className="absolute inset-0 h-full w-full" />
       <Icon

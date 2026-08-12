@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
+/* Sampled from the crowned-frog crest (public/lead-frog-main-logo-*.png): the
+   frog's gradient runs bright lime at the head down to deep teal at the feet,
+   with a gold crown on top. --lime is a highlight only — it does not carry
+   enough contrast on white for body copy. */
 :root {
-  --primary: #025374;
-  --alt-primary: #195740;
+  --primary: #0b3a44;
+  --alt-primary: #2e7d4f;
   --secondary: #ffffff;
-  --accent: #e5c697;
-  --faded-primary: #b7cec5;
+  --accent: #d4af63;
+  --lime: #8fcb55;
+  --faded-primary: #c7e0bc;
   --text: #000000;
 }
 
@@ -14,6 +19,7 @@
   --color-alt-primary: var(--alt-primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-lime: var(--lime);
   --color-faded-primary: var(--faded-primary);
   --color-text: var(--text);
   --font-heading: var(--font-fraunces);

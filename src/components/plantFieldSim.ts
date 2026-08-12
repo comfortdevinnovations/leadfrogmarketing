@@ -198,12 +198,12 @@ export type PlantFieldColors = {
 };
 
 export const DEFAULT_PLANT_COLORS: PlantFieldColors = {
-  stalk: '#195740',
-  stalkEdge: '#025374',
+  stalk: '#2e7d4f',
+  stalkEdge: '#0b3a44',
   stalkHighlight: '#ffffff',
-  leafFill: '#e5c697',
-  leafStroke: '#195740',
-  leafVein: '#025374',
+  leafFill: '#d4af63',
+  leafStroke: '#2e7d4f',
+  leafVein: '#0b3a44',
 };
 
 export type PlantFieldOptions = {

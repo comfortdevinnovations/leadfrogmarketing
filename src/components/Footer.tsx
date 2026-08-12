@@ -41,18 +41,17 @@ export default function Footer() {
       <div className="relative w-full max-w-[120rem] mx-auto px-6 md:px-8 pt-16 pb-10">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <div className="flex items-center gap-2.5 font-heading text-xl font-bold">
-              <div className="flex h-32 w-32 items-center justify-center rounded-md bg-white p-1.5">
-                <Image
-                  src="/lead-logo.png"
-                  alt="Lead Frog Marketing"
-                  width={512}
-                  height={512}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-              Lead Frog<span className="text-accent">.</span>
-            </div>
+            {/* Full crest lockup — the dark footer is what lets its white
+                "MARKETING" bar read. The source PNG is a square with ~15%/20%
+                transparent padding baked in, so the negative margins pull the
+                artwork back to the column edge. */}
+            <Image
+              src="/lead-frog-main-logo-transparent.png"
+              alt="Lead Frog Marketing"
+              width={900}
+              height={900}
+              className="-ml-10 -mt-14 -mb-9 h-64 w-64 object-contain"
+            />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary/70">
               Accelerated growth for brands that refuse to sit still. Lead
               generation, digital strategy, and analytics under one roof.

@@ -68,7 +68,7 @@ export default async function ServicePage(
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1.1fr] items-start">
         <RevealOnScroll>
-          <div className="relative aspect-4/3 w-full overflow-hidden rounded-[2.5rem] border border-secondary/60 shadow-[0_30px_70px_-35px_rgba(2,83,116,0.45)]">
+          <div className="relative aspect-4/3 w-full overflow-hidden rounded-[2.5rem] border border-secondary/60 shadow-[0_30px_70px_-35px_rgba(11,58,68,0.45)]">
             <Image
               src={image}
               alt={title}

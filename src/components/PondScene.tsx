@@ -51,7 +51,7 @@ const PAD_CONFIGS: PadConfig[] = [
     restCenter: { x: -52, y: -68 },
     radius: 40,
     rotate: 'rotate-[15deg]',
-    color: 'text-alt-primary/85 drop-shadow-[0_8px_14px_rgba(25,87,64,0.3)]',
+    color: 'text-alt-primary/85 drop-shadow-[0_8px_14px_rgba(46,125,79,0.3)]',
     driftDuration: '9s',
     driftDelay: '1.2s',
     withFlower: true,
@@ -397,7 +397,7 @@ export default function PondScene() {
       aria-hidden="true"
     >
       {/* water body */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-faded-primary/60 via-primary/15 to-alt-primary/25 shadow-[inset_0_30px_70px_rgba(2,83,116,0.18)]" />
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-faded-primary/60 via-primary/15 to-alt-primary/25 shadow-[inset_0_30px_70px_rgba(11,58,68,0.18)]" />
       <div className="absolute inset-6 rounded-full bg-gradient-to-tr from-primary/10 via-transparent to-white/50" />
       <div className="absolute inset-10 rounded-full opacity-[0.06] grain-overlay" />
       <div className="absolute inset-x-16 top-10 h-px bg-white/50" />

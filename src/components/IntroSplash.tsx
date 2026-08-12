@@ -336,7 +336,7 @@ export default function IntroSplash() {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(115% 85% at 50% 44%, rgba(183,206,197,0.62) 0%, rgba(2,83,116,0.12) 46%, rgba(255,255,255,0) 78%)',
+              'radial-gradient(115% 85% at 50% 44%, rgba(199,224,188,0.62) 0%, rgba(11,58,68,0.12) 46%, rgba(255,255,255,0) 78%)',
           }}
         />
         <div

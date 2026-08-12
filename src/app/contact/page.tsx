@@ -78,7 +78,7 @@ export default function ContactPage() {
         </RevealOnScroll>
 
         <RevealOnScroll delay={0.15}>
-          <div className="relative rounded-[2.5rem] border border-secondary/60 bg-secondary/70 backdrop-blur-2xl p-8 md:p-12 shadow-[0_40px_90px_-40px_rgba(2,83,116,0.4)]">
+          <div className="relative rounded-[2.5rem] border border-secondary/60 bg-secondary/70 backdrop-blur-2xl p-8 md:p-12 shadow-[0_40px_90px_-40px_rgba(11,58,68,0.4)]">
             <div className="absolute inset-x-8 top-0 h-px bg-white/70" aria-hidden="true" />
             <ContactForm />
           </div>

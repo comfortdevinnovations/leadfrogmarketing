@@ -15,15 +15,15 @@ export function escapeHtml(value: string): string {
 
 // Mirrors globals.css so mail matches the site.
 export const palette = {
-  primary: "#025374",
-  altPrimary: "#195740",
-  accent: "#e5c697",
-  fadedPrimary: "#b7cec5",
-  page: "#f2f6f7",
+  primary: "#0b3a44",
+  altPrimary: "#2e7d4f",
+  accent: "#d4af63",
+  fadedPrimary: "#c7e0bc",
+  page: "#f3f7f2",
   card: "#ffffff",
   text: "#1a1a1a",
-  muted: "#5b6b72",
-  hairline: "#e4ebee",
+  muted: "#5e6f63",
+  hairline: "#e6ede6",
 };
 
 // Fraunces/Instrument Sans aren't available in mail clients; these are the

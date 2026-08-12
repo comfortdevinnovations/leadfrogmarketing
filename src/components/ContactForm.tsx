@@ -90,11 +90,11 @@ export default function ContactForm() {
         className="flex flex-col items-center justify-center gap-4 py-16 text-center"
       >
         <Image
-          src="/green-logo.png"
+          src="/lead-logo.png"
           alt="Lead Frog Marketing"
-          width={64}
-          height={64}
-          className="h-16 w-16 object-contain"
+          width={200}
+          height={200}
+          className="h-20 w-20 object-contain"
         />
         <h3 className="font-heading font-black text-3xl text-primary">
           Message received.

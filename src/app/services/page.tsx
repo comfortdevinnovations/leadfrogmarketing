@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import PondScene from '@/components/PondScene';
 import RevealOnScroll from '@/components/RevealOnScroll';
@@ -63,6 +64,16 @@ export default function ServicesPage() {
 
       <section className="w-full max-w-[120rem] mx-auto px-6 md:px-8 pb-24 md:pb-32">
         <RevealOnScroll className="flex flex-col items-center gap-6 rounded-[2.5rem] bg-faded-primary/25 px-8 py-16 text-center">
+          {/* Secondary mark — the crest carries the dark CTA on the home page,
+              so this light one gets the alternate lockup. */}
+          <Image
+            src="/lead-logo.png"
+            alt=""
+            width={200}
+            height={200}
+            aria-hidden="true"
+            className="h-14 w-14 object-contain"
+          />
           <h2 className="font-heading italic text-3xl md:text-4xl text-primary max-w-lg">
             Not sure which pad to start on? We&rsquo;ll map it out together.
           </h2>
