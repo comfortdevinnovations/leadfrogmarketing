@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import ContactForm from "@/components/ContactForm";
 import { EmailIcon, PhoneIcon } from "@/components/icons";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 const description =
   "Tell Lead Frog Marketing about your growth goals and a strategist will follow up within one business day.";
@@ -56,10 +57,10 @@ export default function ContactPage() {
                 <EmailIcon className="h-4 w-4" />
               </span>
               <a
-                href="mailto:hello@leadfrogmarketing.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="hover:text-primary transition-colors"
               >
-                hello@leadfrogmarketing.com
+                {CONTACT_EMAIL}
               </a>
             </div>
             <div className="flex items-center gap-3">

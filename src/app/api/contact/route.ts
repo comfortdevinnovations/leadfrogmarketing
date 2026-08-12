@@ -1,4 +1,7 @@
+import { randomUUID } from "node:crypto";
+import { cookies } from "next/headers";
 import type { NextRequest } from "next/server";
+import { checkRateLimit } from "@/lib/rateLimit";
 import {
   getContactBcc,
   getContactRecipients,
@@ -25,22 +28,38 @@ const LIMITS = {
 // (newlines, commas) without trying to fully parse RFC 5322.
 const EMAIL_PATTERN = /^[^\s@,;:<>"']+@[^\s@,;:<>"'.]+\.[^\s@,;:<>"']+$/;
 
-// Best-effort throttle. Resets on cold start and is per-instance, so treat it
-// as friction for casual abuse rather than a hard guarantee.
-const RATE_LIMIT = { max: 5, windowMs: 10 * 60 * 1000 };
-const hits = new Map<string, number[]>();
+const CLIENT_ID_COOKIE = "lf_cid";
+const CLIENT_ID_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter(
-    (at) => now - at < RATE_LIMIT.windowMs
-  );
-  recent.push(now);
-  hits.set(ip, recent);
+/**
+ * Durable per-browser id, issued by us rather than derived from the request.
+ *
+ * The value is validated as a UUID before use: the cookie is attacker-supplied,
+ * and accepting arbitrary strings would let one caller mint unlimited distinct
+ * rate-limit keys of unbounded length.
+ *
+ * Returns null the first time a browser is seen. The cookie is set on the way
+ * out, so it starts counting from the *next* request — this one is covered by
+ * the IP key alone. That also keeps single-shot bots, which never return a
+ * cookie, from each adding a throwaway entry to the limiter map.
+ */
+async function resolveClientId(): Promise<string | null> {
+  const store = await cookies();
+  const current = store.get(CLIENT_ID_COOKIE)?.value;
 
-  if (hits.size > 5000) hits.clear();
+  if (current && UUID_PATTERN.test(current)) return current;
 
-  return recent.length > RATE_LIMIT.max;
+  store.set(CLIENT_ID_COOKIE, randomUUID(), {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    maxAge: CLIENT_ID_MAX_AGE,
+    path: "/",
+  });
+
+  return null;
 }
 
 /**
@@ -79,7 +98,17 @@ export async function POST(request: NextRequest) {
 
   // Honeypot: a field hidden from humans. Bots fill it in. Return success so
   // they get no signal that the submission was dropped.
-  if (cleanLine(body.website, 100)) {
+  const honeypot = cleanLine(body.subject_ref, 100);
+  if (honeypot) {
+    // A drop is indistinguishable from a success to the caller, which makes an
+    // over-eager honeypot invisible in production. Say so in the dev log, since
+    // browser autofill tripping this is the likeliest cause of "the form says
+    // it worked but no email arrived".
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(
+        `Contact form: honeypot tripped (value: ${JSON.stringify(honeypot)}) — submission dropped, no email sent.`
+      );
+    }
     return Response.json({ ok: true });
   }
 
@@ -88,10 +117,24 @@ export async function POST(request: NextRequest) {
     request.headers.get("x-real-ip") ||
     "unknown";
 
-  if (isRateLimited(ip)) {
+  // Both keys share one allowance: clearing cookies still leaves the IP count,
+  // and moving networks still leaves the cookie count.
+  const clientId = await resolveClientId();
+  const limit = checkRateLimit([
+    `ip:${ip}`,
+    ...(clientId ? [`client:${clientId}`] : []),
+  ]);
+
+  if (!limit.allowed) {
+    const minutes = Math.ceil(limit.retryAfterSeconds / 60);
     return Response.json(
-      { error: "Too many messages sent. Please try again later." },
-      { status: 429 }
+      {
+        error: `Too many messages sent. Please try again in ${minutes} minute${minutes === 1 ? "" : "s"}.`,
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(limit.retryAfterSeconds) },
+      }
     );
   }
 

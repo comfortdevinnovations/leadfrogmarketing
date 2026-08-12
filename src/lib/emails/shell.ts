@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_DOMAIN, SITE_NAME, SITE_URL } from "@/lib/site";
 
 /**
  * Email HTML is assembled by string concatenation, so every interpolated value
@@ -112,9 +112,9 @@ export function renderShell({
             <td style="padding:24px 40px 32px 40px; border-top:1px solid ${palette.hairline}; font-family:${fonts.body}; font-size:12px; line-height:1.6; color:${palette.muted};">
               <p style="margin:0 0 10px 0;">${footerNote}</p>
               <p style="margin:0 0 10px 0;">
-                <a href="${SITE_URL}" style="color:${palette.primary}; text-decoration:underline;">${SITE_URL.replace(/^https:\/\//, "")}</a>
+                <a href="${SITE_URL}" style="color:${palette.primary}; text-decoration:underline;">${SITE_DOMAIN}</a>
                 &nbsp;&middot;&nbsp;
-                <a href="mailto:hello@leadfrogmarketing.com" style="color:${palette.primary}; text-decoration:underline;">hello@leadfrogmarketing.com</a>
+                <a href="mailto:${CONTACT_EMAIL}" style="color:${palette.primary}; text-decoration:underline;">${CONTACT_EMAIL}</a>
               </p>
               <p style="margin:0; color:${palette.muted};">
                 &copy; ${new Date().getFullYear()} ${SITE_NAME}. All rights reserved.

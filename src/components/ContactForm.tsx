@@ -31,6 +31,17 @@ export default function ContactForm() {
     );
   }
 
+  /**
+   * Returns to a blank form. The success panel replaces the <form> entirely, so
+   * the native inputs are unmounted and come back empty on their own — only the
+   * service pills, which live in React state, need clearing by hand.
+   */
+  function resetForm() {
+    setStatus("idle");
+    setError(null);
+    setSelectedServices([]);
+  }
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
@@ -49,7 +60,7 @@ export default function ContactForm() {
           company: data.get("company"),
           message: data.get("message"),
           services: selectedServices,
-          website: data.get("website"),
+          subject_ref: data.get("subject_ref"),
         }),
       });
 
@@ -74,7 +85,10 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
+      <div
+        role="status"
+        className="flex flex-col items-center justify-center gap-4 py-16 text-center"
+      >
         <Image
           src="/green-logo.png"
           alt="Lead Frog Marketing"
@@ -89,6 +103,13 @@ export default function ContactForm() {
           A strategist will reach out within one business day. Thanks for
           hopping our way.
         </p>
+        <button
+          type="button"
+          onClick={resetForm}
+          className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/20 bg-white px-6 py-3 font-heading text-sm uppercase tracking-wider text-primary transition-colors duration-300 hover:border-accent hover:text-alt-primary"
+        >
+          Send another message
+        </button>
       </div>
     );
   }
@@ -96,11 +117,23 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Honeypot: hidden from people, irresistible to bots. A filled value
-          gets the submission silently dropped server-side. */}
-      <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+          gets the submission silently dropped server-side.
+
+          Two constraints keep real submissions from tripping it. The field must
+          not be `display: none`-adjacent-but-visible: off-screen positioning
+          still reads as visible to browser autofill and password-manager
+          fillers, which then populate it. And the name must not match an
+          autofill category — anything url/website/email/phone/address-shaped
+          gets filled on sight. */}
+      <div className="hidden" aria-hidden="true">
         <label>
-          Website
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          Subject reference
+          <input
+            type="text"
+            name="subject_ref"
+            tabIndex={-1}
+            autoComplete="off"
+          />
         </label>
       </div>
 

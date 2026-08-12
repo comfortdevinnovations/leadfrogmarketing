@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { CONTACT_EMAIL } from '@/lib/site';
 
 const columns = [
   {
@@ -85,10 +86,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-secondary/75">
               <li>
                 <a
-                  href="mailto:hello@leadfrogmarketing.com"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="hover:text-secondary transition-colors"
                 >
-                  hello@leadfrogmarketing.com
+                  {CONTACT_EMAIL}
                 </a>
               </li>
               <li>
